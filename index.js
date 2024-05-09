@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cors from 'cors'
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import taskRouter from "./routes/task.js";
@@ -9,6 +10,7 @@ dotenv.config();
 connectToDB().catch((e) => {
   console.log(e);
 });
+app.use(cors())
 app.use(cookieParser());
 app.use(express.json());
 if (process.env.NODE_ENV === "development") {
